@@ -1,14 +1,19 @@
 package com.tupinamba.springbootwebsocket.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tupinamba.springbootwebsocket.model.Mensagem;
-import com.tupinamba.springbootwebsocket.service.MensageService;
+import com.tupinamba.springbootwebsocket.service.MensagemService;
 
 @Controller
 public class ChatController {
@@ -17,7 +22,7 @@ public class ChatController {
     private SimpMessagingTemplate messagingTemplate;
 
     @Autowired
-    private MensageService mensageService;
+    private MensagemService mensagemService;
 
     // Registra o usuário em um chat específico
     @MessageMapping("/chat.register")
@@ -33,7 +38,9 @@ public class ChatController {
         // A mensagem é enviada para um tópico específico, baseado no ID do chat
         messagingTemplate.convertAndSend("/topic/chat/" + mensagem.getChat().getId(), mensagem);
 
+        System.out.println(mensagem.getUsuario().getUsername() + " enviou uma mensagem: " + mensagem.getConteudo());
         // Persistindo a mensagem no banco de dados
-        mensageService.save(mensagem);
+        mensagemService.save(mensagem);
     }
+
 }

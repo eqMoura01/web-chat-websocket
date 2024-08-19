@@ -18,7 +18,7 @@ export class ChatService {
 
   constructor() {
     this.stompClient = new Client({
-      brokerURL: 'ws://localhost/:8080/websocket',
+      brokerURL: 'ws://localhost:8080/websocket',
       connectHeaders: {
       },
       reconnectDelay: 5000,

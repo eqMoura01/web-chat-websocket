@@ -7,7 +7,7 @@ import com.tupinamba.springbootwebsocket.model.Mensagem;
 import com.tupinamba.springbootwebsocket.repository.MensagemRepository;
 
 @Service
-public class MensageService {
+public class MensagemService {
 
     @Autowired
     private MensagemRepository mensagemRepository;

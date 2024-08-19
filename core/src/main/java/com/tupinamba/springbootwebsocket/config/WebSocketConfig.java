@@ -16,7 +16,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint(WEBSOCKET_ENDPOINT);
+        // TODO: Configurar a origem permitida para o endpoint do websocket
+        registry.addEndpoint(WEBSOCKET_ENDPOINT).setAllowedOrigins("http://localhost:4200");
         System.out.println("Websocket configurado");
     }
 
