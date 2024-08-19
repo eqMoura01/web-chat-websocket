@@ -41,6 +41,8 @@ export class ChatComponent implements OnInit {
   sendMessage(): void {
     const messageContent = this.chatForm.get('message')?.value;
 
+    console.log(messageContent);
+
     if (messageContent) {
       this.chatService.sendMessage(this.userId, messageContent);
       this.chatForm.reset();

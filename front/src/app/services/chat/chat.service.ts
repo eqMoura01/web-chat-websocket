@@ -4,9 +4,8 @@ import { Client, Stomp } from '@stomp/stompjs';
 
 interface Mensagem {
   chat: { id: number };
-  usuario: { username: string };
+  usuario: { id: number };
   conteudo: string;
-  dataEnvio: Date;
 }
 
 @Injectable({
@@ -15,6 +14,7 @@ interface Mensagem {
 export class ChatService {
   private stompClient: Client;
   private messagesSubject = new Subject<Mensagem>();
+  private usuarioLogado = localStorage.getItem('usuario-logado');
 
   constructor() {
     this.stompClient = new Client({
@@ -23,7 +23,7 @@ export class ChatService {
       },
       reconnectDelay: 5000,
       debug: (str) => {
-        console.warn(`debug: ${str}`) 
+        console.warn(`debug: ${str}`)
       }
     });
 
@@ -47,11 +47,16 @@ export class ChatService {
 
   sendMessage(chatId: number, messageContent: string): void {
     const mensagem: Mensagem = {
-      chat: { id: chatId },
-      usuario: { username: 'username' },
-      conteudo: messageContent,
-      dataEnvio: new Date()
+      chat: {
+        id: 1
+      },
+      usuario: {
+        id: JSON.parse(this.usuarioLogado!).id
+      },
+      conteudo: messageContent
     };
+
+    console.log(mensagem);
 
     this.stompClient.publish({
       destination: '/app/chat.send',
