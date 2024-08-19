@@ -1,0 +1,16 @@
+<div *ngIf="messages.length">
+    <ul>
+      <li *ngFor="let message of messages">
+        <strong>{{ message.usuario.username }}:</strong> {{ message.conteudo }}
+      </li>
+    </ul>
+  </div>
+  
+  <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
+    <div class="form-group">
+      <label for="message">Message</label>
+      <input id="message" formControlName="message" placeholder="Type a message" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+  

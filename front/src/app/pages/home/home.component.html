@@ -1,0 +1,12 @@
+<div *ngIf="users.length > 0; else noUsers">
+    <ul>
+      <li *ngFor="let user of users">
+        {{ user.username }}
+        <button (click)="startChat(user.id)">Start Chat</button>
+      </li>
+    </ul>
+  </div>
+  <ng-template #noUsers>
+    <p>No users found.</p>
+  </ng-template>
+  
