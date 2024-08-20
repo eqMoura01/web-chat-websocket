@@ -1,17 +1,19 @@
 <div *ngIf="mensagens.length">
-    <ul>
-      <li *ngFor="let mensagem of mensagens">
-        <strong>{{ mensagem.usuario.username }}:</strong> {{ mensagem.conteudo }}
-      </li>
-    </ul>
+  <ul>
+    <li *ngFor="let mensagem of mensagens">
+      <strong>
+        {{ mensagem.remetente.username }}
+      </strong>
+      <span>{{ mensagem.conteudo }}</span>
+    </li>
+  </ul>
+</div>
+
+<form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
+  <div class="form-group">
+    <label for="message">Message</label>
+    <input id="message" formControlName="message" placeholder="Type a message" class="form-control" />
   </div>
-  
-  <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
-    <div class="form-group">
-      <label for="message">Message</label>
-      <input id="message" formControlName="message" placeholder="Type a message" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Send</button>
-    <button (click)="handleBackPage()" class="btn btn-primary">voltar</button>
-  </form>
-  
+  <button type="submit" class="btn btn-primary">Send</button>
+  <button (click)="handleBackPage()" class="btn btn-primary">voltar</button>
+</form>

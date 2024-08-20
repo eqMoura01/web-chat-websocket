@@ -23,7 +23,8 @@ public class SpringBootWebsocketApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(UsuarioController usuarioController, ChatService chatService, MensagemService mensagemService) {
+    public CommandLineRunner commandLineRunner(UsuarioController usuarioController, ChatService chatService,
+            MensagemService mensagemService) {
         return args -> {
 
             // Create some users
@@ -39,9 +40,9 @@ public class SpringBootWebsocketApplication {
             Chat c1 = new Chat(null, usuarios);
             chatService.save(c1);
 
-            Mensagem m1 = new Mensagem(null, c1, u1, "Olá, tudo bem?", null);
-            Mensagem m2 = new Mensagem(null, c1, u2, "Oi, tudo sim e você?", null);
-            Mensagem m3 = new Mensagem(null, c1, u1, "Tudo ótimo!", null);
+            Mensagem m1 = new Mensagem(null, c1, u1, u2, "Olá, tudo bem?", null);
+            Mensagem m2 = new Mensagem(null, c1, u2, u1, "Oi, tudo sim e você?", null);
+            Mensagem m3 = new Mensagem(null, c1, u1, u2, "Tudo ótimo!", null);
 
             mensagemService.save(m1);
             mensagemService.save(m2);

@@ -21,8 +21,12 @@ public class Mensagem {
     private Chat chat;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    @JoinColumn(name = "usuario_remetente_id")
+    private Usuario remetente;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_destinatario_id")
+    private Usuario destinatario;
 
     private String conteudo;
 
@@ -31,10 +35,11 @@ public class Mensagem {
     public Mensagem() {
     }
 
-    public Mensagem(Long id, Chat chat, Usuario usuario, String conteudo, Timestamp dataEnvio) {
+    public Mensagem(Long id, Chat chat, Usuario remetente, Usuario destinatario, String conteudo, Timestamp dataEnvio) {
         this.id = id;
         this.chat = chat;
-        this.usuario = usuario;
+        this.remetente = remetente;
+        this.destinatario = destinatario;
         this.conteudo = conteudo;
         this.dataEnvio = dataEnvio;
     }
@@ -55,12 +60,20 @@ public class Mensagem {
         this.chat = chat;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getRemetente() {
+        return remetente;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setRemetente(Usuario usuario) {
+        this.remetente = usuario;
+    }
+
+    public Usuario getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(Usuario destinatario) {
+        this.destinatario = destinatario;
     }
 
     public String getConteudo() {

@@ -26,20 +26,20 @@ public class ChatWebSocketController {
     // Registra o usuário em um chat específico
     @MessageMapping("/chat.register")
     public void register(@Payload Mensagem mensagem, SimpMessageHeaderAccessor headerAccessor) {
-        headerAccessor.getSessionAttributes().put("username", mensagem.getUsuario().getUsername());
-        System.out.println("Usuário registrado: " + mensagem.getUsuario().getUsername());
+        headerAccessor.getSessionAttributes().put("id_usuario", mensagem.getRemetente().getId());
+        System.out.println("Usuário registrado: " + mensagem.getRemetente().getUsername());
     }
 
     // Envia mensagem para um chat específico
     @MessageMapping("/chat.send")
     public Mensagem sendMessage(@Payload Mensagem mensagem) {
 
-        mensagem.setUsuario(usuarioService.findById(mensagem.getUsuario().getId()));
+        mensagem.setRemetente(usuarioService.findById(mensagem.getRemetente().getId()));
 
         // A mensagem é enviada para um tópico específico, baseado no ID do chat
-        messagingTemplate.convertAndSend("/topic/chat/" + mensagem.getChat().getId(), mensagem);
-
-        System.out.println(mensagem.getUsuario().getUsername() + " enviou uma mensagem: " + mensagem.getConteudo());
+        messagingTemplate.convertAndSend("/topic/usuario/" + mensagem.getDestinatario().getId(), mensagem);
+ 
+        System.out.println(mensagem.getRemetente().getUsername() + " enviou uma mensagem: " + mensagem.getConteudo());
         // Persistindo a mensagem no banco de dados
         return mensagemService.save(mensagem);
     }

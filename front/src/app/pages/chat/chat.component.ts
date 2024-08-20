@@ -6,14 +6,19 @@ import { ChatService } from '../../services/chat/chat.service';
 
 interface Mensagem {
   chat: {
-    id: number;
+    id: number
   };
-  usuario: {
-    id: number;
-    username?: string;
+  remetente: {
+    id: number,
+    username: string
+  };
+  destinatario: {
+    id: number,
+    username: string
   };
   conteudo: string;
 }
+
 
 @Component({
   selector: 'app-chat',
@@ -26,7 +31,7 @@ export class ChatComponent implements OnInit {
   userId!: number;
   mensagens: Mensagem[] = [];
   chatForm: FormGroup;
-  usuarioLogado: { id: number; username: string } = JSON.parse(localStorage.getItem('usuario-logado')!);
+  usuarioLogado: any
 
   constructor(private route: ActivatedRoute, private chatService: ChatService) {
     this.chatForm = new FormGroup({
@@ -36,35 +41,19 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getMessages(1);
+    this.usuarioLogado = history.state.usuarioLogado;
     this.userId = this.usuarioLogado.id;
-    this.initializeChat();
-    this.getMessages(3);
-
-  }
-
-  initializeChat(): void {
-    // Assinatura das mensagens recebidas em tempo real via WebSocket
-    this.chatService.getMessages().subscribe((mensagem: Mensagem) => {
-      this.mensagens.push({
-        chat: {
-          id: mensagem.chat.id,
-        },
-        usuario: {
-          id: mensagem.usuario.id,
-          username: mensagem.usuario.username,
-        },
-        conteudo: mensagem.conteudo,
-      });
-      console.log('Nova mensagem recebida:', mensagem);
-    });
   }
 
   sendMessage(): void {
     const messageContent = this.chatForm.get('message')?.value;
-    console.log('Mensagem enviada com sucesso!' + JSON.parse(localStorage.getItem('usuario-logado')!).username + messageContent);
+    console.log('Mensagem enviada com sucesso! ' + JSON.parse(localStorage.getItem('usuario-logado')!).username + " " + messageContent);
 
     if (messageContent) {
-      this.chatService.sendMessage(2, messageContent); // Substitua o ID do chat conforme necessário
+
+      this.chatService.sendMessage(1, this.usuarioLogado.id, history.state.destinatario, messageContent);
+
       this.chatForm.reset();
     }
   }
@@ -73,6 +62,8 @@ export class ChatComponent implements OnInit {
     const response = await fetch(`http://localhost:8080/mensagem/chat/${chatId}`);
     const data = await response.json();
     this.mensagens = data;
+    console.log('Usuario logado', this.usuarioLogado);
+    console.log('Mensagens:', data);
   }
 
   handleBackPage(): void {

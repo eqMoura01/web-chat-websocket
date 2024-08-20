@@ -1,5 +1,6 @@
 package com.tupinamba.springbootwebsocket.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.tupinamba.springbootwebsocket.model.Mensagem;
 import com.tupinamba.springbootwebsocket.repository.MensagemRepository;
-import java.sql.Timestamp;
 
 @Service
 public class MensagemService {
@@ -18,9 +18,15 @@ public class MensagemService {
     @Autowired
     private MensagemRepository mensagemRepository;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     public Mensagem save(Mensagem mensagem) {
-        System.out.println("Mensagem registrada: " + mensagem.getUsuario().getUsername());
+        System.out.println("Mensagem registrada: " + mensagem.getRemetente().getUsername());
         mensagem.setDataEnvio(Timestamp.valueOf(java.time.LocalDateTime.now()));
+
+        mensagem.setDestinatario(usuarioService.findById(mensagem.getDestinatario().getId()));
+        mensagem.setRemetente(usuarioService.findById(mensagem.getRemetente().getId()));
         return mensagemRepository.save(mensagem);
     }
 
