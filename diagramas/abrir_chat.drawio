@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.7.7">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="683" dy="358" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-0" target="4n5_cRkvtmPD9ju6ogBP-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-0" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="20" y="15" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-1" target="4n5_cRkvtmPD9ju6ogBP-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-1" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Clica abrir chat&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="90" y="10" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-3" target="4n5_cRkvtmPD9ju6ogBP-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-3" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Seleciona usuario para conversar&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="260" y="10" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-5" target="4n5_cRkvtmPD9ju6ogBP-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-5" value="Pega ID usuario logado e ID do usuario para conversar" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="430" y="10" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-7" target="4n5_cRkvtmPD9ju6ogBP-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-7" value="Verifica existencia de chat com esses dois IDs" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="600" y="10" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-9" target="4n5_cRkvtmPD9ju6ogBP-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-9" target="4n5_cRkvtmPD9ju6ogBP-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-9" value="Existe chat &#xa;com os dois&#xa;IDs?" style="rhombus;fontSize=8;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="625" y="90" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-11" target="4n5_cRkvtmPD9ju6ogBP-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-11" value="Cria novo chat no banco para a lista de IDs" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="445" y="105" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-13" target="4n5_cRkvtmPD9ju6ogBP-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-13" value="Iniciar chat" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="275" y="105" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-15" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="205" y="110" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-17" value="False" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="585" y="103" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-18" target="4n5_cRkvtmPD9ju6ogBP-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-18" value="Lista mensagens com o ID do respectivo chat" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="600" y="200" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-20" value="True" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="655" y="151" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-21" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="365" y="205" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4n5_cRkvtmPD9ju6ogBP-22" target="4n5_cRkvtmPD9ju6ogBP-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4n5_cRkvtmPD9ju6ogBP-22" value="Abre chat com as mensagens" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="445" y="200" width="120" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
