@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Client, Stomp } from '@stomp/stompjs';
+import { Client } from '@stomp/stompjs';
 
 interface Mensagem {
   chat: { id: number };
@@ -19,8 +19,6 @@ export class ChatService {
   constructor() {
     this.stompClient = new Client({
       brokerURL: 'ws://localhost:8080/websocket',
-      connectHeaders: {
-      },
       reconnectDelay: 5000,
       debug: (str) => {
         console.warn(`debug: ${str}`)
@@ -31,7 +29,8 @@ export class ChatService {
 
     this.stompClient.onConnect = () => {
       console.log('Conectado com sucesso!');
-      this.stompClient.subscribe('/topic/', (message) => {
+      // Assinando o tópico específico do chat
+      this.stompClient.subscribe('/topic/chat/2', (message) => {
         this.messagesSubject.next(JSON.parse(message.body));
       });
     };
@@ -47,16 +46,10 @@ export class ChatService {
 
   sendMessage(chatId: number, messageContent: string): void {
     const mensagem: Mensagem = {
-      chat: {
-        id: 1
-      },
-      usuario: {
-        id: JSON.parse(this.usuarioLogado!).id
-      },
+      chat: { id: chatId },
+      usuario: { id: JSON.parse(this.usuarioLogado!).id },
       conteudo: messageContent
     };
-
-    console.log(mensagem);
 
     this.stompClient.publish({
       destination: '/app/chat.send',

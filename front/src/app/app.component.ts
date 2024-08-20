@@ -10,4 +10,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'web-chats';
+  usuarioLogado = JSON.parse(localStorage.getItem('usuario-logado')!);
 }
