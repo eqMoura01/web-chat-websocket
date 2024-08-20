@@ -85,4 +85,11 @@ export class ChatService {
     console.log('Mensagens:', this.messagesSubject.asObservable());
     return this.messagesSubject.asObservable();
   }
+
+  getChatByUsersId(idRemetente: number, idDestinatario: number): any {
+    const response = fetch(`http://localhost:8080/api/chat/userId1/${idRemetente}/userId2/${idDestinatario}`)
+      .then(response => {
+        console.log('Chat:', response.json());
+      });
+  }
 }

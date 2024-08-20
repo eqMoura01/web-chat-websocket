@@ -34,11 +34,9 @@ public class ChatWebSocketController {
     @MessageMapping("/chat.send")
     public Mensagem sendMessage(@Payload Mensagem mensagem) {
 
-        mensagem.setRemetente(usuarioService.findById(mensagem.getRemetente().getId()));
-
         // A mensagem é enviada para um tópico específico, baseado no ID do chat
         messagingTemplate.convertAndSend("/topic/usuario/" + mensagem.getDestinatario().getId(), mensagem);
- 
+
         System.out.println(mensagem.getRemetente().getUsername() + " enviou uma mensagem: " + mensagem.getConteudo());
         // Persistindo a mensagem no banco de dados
         return mensagemService.save(mensagem);

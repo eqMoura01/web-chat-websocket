@@ -23,13 +23,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUsers().then((users: User[]) => {
       this.users = users;
-
-      console.log('Usuários:', users);
     });
   }
 
   startChat(id: number): void {
-    console.log('Iniciar chat com o usuário de ID:', id);
     this.router.navigate(['/chat', id], {
       state: {
         usuarioLogado: this.usuarioLogado,

@@ -37,16 +37,16 @@ public class SpringBootWebsocketApplication {
             List<Usuario> usuarios = new ArrayList<>();
             usuarios.add(u1);
             usuarios.add(u2);
-            Chat c1 = new Chat(null, usuarios);
-            chatService.save(c1);
+            // Chat c1 = new Chat(null, usuarios);
+            // chatService.save(c1);
 
-            Mensagem m1 = new Mensagem(null, c1, u1, u2, "Olá, tudo bem?", null);
-            Mensagem m2 = new Mensagem(null, c1, u2, u1, "Oi, tudo sim e você?", null);
-            Mensagem m3 = new Mensagem(null, c1, u1, u2, "Tudo ótimo!", null);
+            // Mensagem m1 = new Mensagem(null, c1, u1, u2, "Olá, tudo bem?", null);
+            // Mensagem m2 = new Mensagem(null, c1, u2, u1, "Oi, tudo sim e você?", null);
+            // Mensagem m3 = new Mensagem(null, c1, u1, u2, "Tudo ótimo!", null);
 
-            mensagemService.save(m1);
-            mensagemService.save(m2);
-            mensagemService.save(m3);
+            // mensagemService.save(m1);
+            // mensagemService.save(m2);
+            // mensagemService.save(m3);
         };
     }
 
