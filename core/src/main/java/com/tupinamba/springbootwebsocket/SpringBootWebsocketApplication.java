@@ -32,11 +32,13 @@ public class SpringBootWebsocketApplication {
             usuarioController.save(u1);
             Usuario u2 = new Usuario(null, "eqwillian", "teste");
             usuarioController.save(u2);
+            Usuario u3 = new Usuario(null, "eqlucas", "teste");
+            usuarioController.save(u3);
 
             // Create a chat with the users
-            List<Usuario> usuarios = new ArrayList<>();
-            usuarios.add(u1);
-            usuarios.add(u2);
+            // List<Usuario> usuarios = new ArrayList<>();
+            // usuarios.add(u1);
+            // usuarios.add(u2);
             // Chat c1 = new Chat(null, usuarios);
             // chatService.save(c1);
 
