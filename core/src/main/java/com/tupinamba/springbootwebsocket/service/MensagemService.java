@@ -24,8 +24,6 @@ public class MensagemService {
     public Mensagem save(Mensagem mensagem) {
         System.out.println("Mensagem registrada: " + mensagem.getRemetente().getUsername());
         mensagem.setDataEnvio(Timestamp.valueOf(java.time.LocalDateTime.now()));
-
-        mensagem.setDestinatario(usuarioService.findById(mensagem.getDestinatario().getId()));
         mensagem.setRemetente(usuarioService.findById(mensagem.getRemetente().getId()));
         return mensagemRepository.save(mensagem);
     }
@@ -39,7 +37,7 @@ public class MensagemService {
     }
 
     public Mensagem findById(Long id) {
- 
+
         Optional<Mensagem> mensagem = mensagemRepository.findById(id);
 
         if (!mensagem.isPresent()) {

@@ -1,6 +1,8 @@
 package com.tupinamba.springbootwebsocket.model;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Mensagem {
@@ -24,9 +27,9 @@ public class Mensagem {
     @JoinColumn(name = "usuario_remetente_id")
     private Usuario remetente;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_destinatario_id")
-    private Usuario destinatario;
+    @OneToMany
+    @JoinColumn(name = "usuario_visualizadores_id")
+    private List<Usuario> visualizadores;
 
     private String conteudo;
 
@@ -35,11 +38,12 @@ public class Mensagem {
     public Mensagem() {
     }
 
-    public Mensagem(Long id, Chat chat, Usuario remetente, Usuario destinatario, String conteudo, Timestamp dataEnvio) {
+    public Mensagem(Long id, Chat chat, Usuario remetente, List<Usuario> visualizadores, String conteudo,
+            Timestamp dataEnvio) {
         this.id = id;
         this.chat = chat;
         this.remetente = remetente;
-        this.destinatario = destinatario;
+        this.visualizadores = visualizadores;
         this.conteudo = conteudo;
         this.dataEnvio = dataEnvio;
     }
@@ -68,12 +72,12 @@ public class Mensagem {
         this.remetente = usuario;
     }
 
-    public Usuario getDestinatario() {
-        return destinatario;
+    public List<Usuario> getVisualizadores() {
+        return visualizadores;
     }
 
-    public void setDestinatario(Usuario destinatario) {
-        this.destinatario = destinatario;
+    public void setVisualizadores(List<Usuario> visualizadores) {
+        this.visualizadores = visualizadores;
     }
 
     public String getConteudo() {
@@ -92,4 +96,5 @@ public class Mensagem {
         this.dataEnvio = dataEnvio;
     }
 
+    
 }

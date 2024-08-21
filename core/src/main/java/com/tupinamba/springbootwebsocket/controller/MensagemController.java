@@ -23,7 +23,7 @@ public class MensagemController {
     private MensagemService mensagemService;
 
     @PostMapping
-    public ResponseEntity<Mensagem> save(@RequestBody Mensagem mensagem) {
+    public ResponseEntity<Mensagem> save(@RequestBody Mensagem mensagem) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED).body(mensagemService.save(mensagem));
     }
 

@@ -13,13 +13,12 @@ import com.tupinamba.springbootwebsocket.model.Chat;
 public interface ChatRepository extends JpaRepository<Chat, Long> {
 
     @Query("SELECT c.id " +
-           "FROM Chat c " +
-           "JOIN c.usuarios u " +
-           "WHERE u.id IN (:id1, :id2) " +
-           "GROUP BY c.id " +
-           "HAVING COUNT(DISTINCT u.id) = 2 " + 
-           "AND COUNT(u.id) = 2 " +
-           "AND SUM(CASE WHEN u.id = :id1 THEN 1 ELSE 0 END) = 1 " +
-           "AND SUM(CASE WHEN u.id = :id2 THEN 1 ELSE 0 END) = 1")
-    Long findByUsersIds(@Param("id1") Long usuarioId1, @Param("id2") Long usuarioId2);
+       "FROM Chat c " +
+       "JOIN c.usuarios u " +
+       "WHERE u.id IN (:userIds) " +
+       "GROUP BY c.id " +
+       "HAVING COUNT(DISTINCT u.id) = :size " +
+       "AND COUNT(u.id) = :size " +
+       "AND SUM(CASE WHEN u.id IN (:userIds) THEN 1 ELSE 0 END) = :size")
+    Long findByUsersIds(@Param("userIds") List<Long> usersIds, @Param("size") Long size);
 }

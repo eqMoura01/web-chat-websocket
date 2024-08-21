@@ -1,5 +1,6 @@
 package com.tupinamba.springbootwebsocket.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,9 @@ public class ChatService {
     private ChatRepository chatRepository;
 
     public Chat save(Chat chat) {
+
+        chat.setDataHoraCriacao(Timestamp.valueOf(java.time.LocalDateTime.now()));
+
         return chatRepository.save(chat);
     }
 
@@ -36,24 +40,26 @@ public class ChatService {
         return chat.get();
     }
 
-    public Chat findByUsersIds(Long user1Id, Long user2Id) {
-        Long id = chatRepository.findByUsersIds(user1Id, user2Id);
+    public Chat findByUsersIds(Chat chat) {
 
-        Chat chat = null;
+        List<Long> userIds = new ArrayList<>();
+        Long size = Long.valueOf(chat.getUsuarios().size());
+
+        for (Usuario usuario : chat.getUsuarios()) {
+            userIds.add(usuario.getId());
+        }
+
+        Long id = chatRepository.findByUsersIds(userIds, size);
+
         if (id == null) {
-            chat = createNewChat(user1Id, user2Id);
+            chat = createNewChat(chat);
             return chat;
         }
 
         return findById(id);
     }
 
-    public Chat createNewChat(Long user1Id, Long user2Id) {
-
-        List<Usuario> usuarios = new ArrayList<>();
-
-        usuarios.add(new Usuario(user1Id, null, null));
-        usuarios.add(new Usuario(user2Id, null, null));
-        return save(new Chat(null, usuarios));
+    public Chat createNewChat(Chat chat) {
+        return save(chat);
     }
 }

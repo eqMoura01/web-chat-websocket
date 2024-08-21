@@ -8,6 +8,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.tupinamba.springbootwebsocket.model.Mensagem;
+import com.tupinamba.springbootwebsocket.model.Usuario;
 import com.tupinamba.springbootwebsocket.service.MensagemService;
 import com.tupinamba.springbootwebsocket.service.UsuarioService;
 
@@ -34,10 +35,15 @@ public class ChatWebSocketController {
     @MessageMapping("/chat.send")
     public Mensagem sendMessage(@Payload Mensagem mensagem) {
 
-        // A mensagem é enviada para um tópico específico, baseado no ID do chat
-        messagingTemplate.convertAndSend("/topic/usuario/" + mensagem.getDestinatario().getId(), mensagem);
+        for (Usuario usuario : mensagem.getChat().getUsuarios()) {
+            if (usuario.getId() != mensagem.getRemetente().getId()) {
+                messagingTemplate.convertAndSend("/topic/usuario/" + usuario.getId(), mensagem);
+                ;
+            }
+        }
 
         System.out.println(mensagem.getRemetente().getUsername() + " enviou uma mensagem: " + mensagem.getConteudo());
+
         // Persistindo a mensagem no banco de dados
         return mensagemService.save(mensagem);
     }
