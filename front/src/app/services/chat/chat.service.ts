@@ -1,23 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Client } from '@stomp/stompjs';
-
-export interface Mensagem {
-  chat: {
-    id: number
-  };
-  remetente: {
-    id: number,
-    username: string
-  };
-  destinatario: {
-    id: number,
-    username: string
-  };
-  conteudo: string;
-}
-
-
+import { Mensagem } from '../../interfaces/mensagem'; // Importe a interface `Mensagem` corretamente
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +11,12 @@ export class ChatService {
   private messagesSubject = new Subject<Mensagem>();
   private usuarioLogado = JSON.parse(localStorage.getItem('usuario-logado')!);
 
-
   constructor() {
     this.stompClient = new Client({
       brokerURL: 'ws://localhost:8080/websocket',
       reconnectDelay: 5000,
       debug: (str) => {
-        console.warn(`debug: ${str}`)
+        console.warn(`debug: ${str}`);
       }
     });
 
@@ -42,7 +25,7 @@ export class ChatService {
     this.stompClient.onConnect = () => {
       console.log('Conectado com sucesso!');
       // Assinando o tópico específico do chat
-      this.stompClient.subscribe(`/topic/user/${this.usuarioLogado.id}`, (message) => {
+      this.stompClient.subscribe(`/topic/usuario/${this.usuarioLogado.id}`, (message) => {
         this.messagesSubject.next(JSON.parse(message.body));
         console.log('Nova mensagem recebida:', JSON.parse(message.body));
       });
@@ -57,21 +40,22 @@ export class ChatService {
     };
   }
 
-  sendMessage(chatId: number, idRemetente: number, idDestinatario: number, messageContent: string): void {
-    const mensagem: Mensagem = {
-      chat: {
-        id: chatId
-      },
-      remetente: {
-        id: idRemetente,
-        username: ''
-      },
-      destinatario: {
-        id: idDestinatario,
-        username: ''
-      },
-      conteudo: messageContent,
-    };
+  sendMessage(mensagem: Mensagem): void {
+    // const mensagem: Mensagem = {
+    //   chat: {
+    //     id: chatId
+    //   },
+    //   remetente: {
+    //     id: idRemetente,
+    //     username: this.usuarioLogado.username
+    //   },
+    //   destinatario: {
+    //     id: idDestinatario,
+    //     username: '' // Atualize este campo conforme necessário
+    //   },
+    //   conteudo: messageContent,
+    // };
+    mensagem
 
     console.log('Mensagem:', mensagem);
 
@@ -82,14 +66,13 @@ export class ChatService {
   }
 
   getMessages(): Observable<Mensagem> {
-    console.log('Mensagens:', this.messagesSubject.asObservable());
     return this.messagesSubject.asObservable();
   }
 
-  getChatByUsersId(idRemetente: number, idDestinatario: number): any {
-    const response = fetch(`http://localhost:8080/api/chat/userId1/${idRemetente}/userId2/${idDestinatario}`)
-      .then(response => {
-        console.log('Chat:', response.json());
-      });
+  async getChatByUsersId(idRemetente: number, idDestinatario: number): Promise<any> {
+    const response = await fetch(`http://localhost:8080/api/chat/userId1/${idRemetente}/userId2/${idDestinatario}`);
+    const data = await response.json();
+    console.log('Chat:', data);
+    return data;
   }
 }

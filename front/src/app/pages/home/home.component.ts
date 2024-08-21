@@ -33,5 +33,7 @@ export class HomeComponent implements OnInit {
         destinatario: id
       }
     });
+
+    console.log('Usuario logado: ' + JSON.stringify(this.usuarioLogado) + '\nDestinatario: ' + id)
   }
 }
