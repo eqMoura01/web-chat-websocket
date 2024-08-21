@@ -28,6 +28,7 @@ export class ChatService {
       this.stompClient.subscribe(`/topic/usuario/${this.usuarioLogado.id}`, (message) => {
         this.messagesSubject.next(JSON.parse(message.body));
         console.log('Nova mensagem recebida:', JSON.parse(message.body));
+        alert('Nova mensagem recebida de ' + JSON.parse(message.body).remetente.username)
       });
     };
 
